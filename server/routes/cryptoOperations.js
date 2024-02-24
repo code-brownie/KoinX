@@ -7,7 +7,7 @@ const getCompanyName = require('../api/CompanyData');
 
 // Api :--> Save to the db the list of the cryptocurrencies
 //Task 1
-router.get('/saveCryptoList', async (req, res) => {
+router.get('/GetCoins', async (req, res) => {
     try {
         // Fetching the coins from the coinGeko api
         const crypto_list = await getCoins();
@@ -18,9 +18,11 @@ router.get('/saveCryptoList', async (req, res) => {
         const limitedCryptoList = crypto_list.slice(0, 100);
 
         // Saving to the database
-        await crypto.create({ cryptocurrencies: limitedCryptoList });
+        const ifCoinsExist = await crypto.find({});
+        if (ifCoinsExist.length == 0)
+            await crypto.create({ cryptocurrencies: limitedCryptoList });
 
-        return res.json({ success: true, message: "Cryptocurrencies saved successfully." });
+        return res.json({ success: true, message: "coins fetched successfully", coins: limitedCryptoList });
     } catch (error) {
         console.log(error.message);
         return res.json({ success: false, error });
@@ -30,7 +32,7 @@ router.get('/saveCryptoList', async (req, res) => {
 // Api :--> Price of currency on  a specific date
 
 // Task 2
-router.post('/getPrice', async (req, res) => {
+router.post('/GetCoinPrice', async (req, res) => {
     try {
         const { coinName, toCurrency, date } = req.body;
         if (!coinName || !toCurrency || !date) {
@@ -54,7 +56,7 @@ router.post('/company_list', async (req, res) => {
         if (!currency) return res.status(400).send('Please provide a valid Crypto Name');
         const companyList = await getCompanyName(currency);
         if (!companyList) return res.status(404).send('Companies Not found');
-        return res.status(200).json({ success: true, companyList: companyList});
+        return res.status(200).json({ success: true, companyList: companyList });
     } catch (error) {
         return res.status(500).json({ success: false, err: error.message });
     }
