@@ -1,0 +1,14 @@
+# Dependency directories
+node_modules/
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env
+
+# IDE (e.g., Visual Studio Code) configuration
+.vscode/
+
+# Optional eslint cache
+.eslintcache
