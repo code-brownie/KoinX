@@ -12,5 +12,5 @@ app.use('/api', require('./routes/cryptoOperations')); // for crypto related ope
 // app listening
 app.listen(port, () => {
     console.log("server listening on port", port);
-    // scheduleTask.start();
+     scheduleTask.start();
 })
