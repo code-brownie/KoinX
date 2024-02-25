@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'Description'
   },
-  host: 'localhost:3000'
+  host: 'https://koinx-laft.onrender.com'
 };
 
 const outputFile = './swagger-output.json';
