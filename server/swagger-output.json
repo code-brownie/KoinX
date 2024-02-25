@@ -7,9 +7,6 @@
   },
   "host": "https://koinx-laft.onrender.com",
   "basePath": "/api",
-  "schemes": [
-    "https"
-  ],
   "paths": {
     "/GetCoins": {
       "get": {
