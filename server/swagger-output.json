@@ -5,7 +5,7 @@
     "description": "This API provides basic crypto management functionalities using CoinGecko API. You can get real-time prices, list all cryptocurrencies, and retrieve company information for a specific coin.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://koinx-laft.onrender.com",
   "basePath": "/api",
   "schemes": [
     "http"
